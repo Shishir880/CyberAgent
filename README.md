@@ -108,6 +108,76 @@ Double-click `start_cyber_agent.bat`.
 
 ---
 
+## 💻 CLI Commands & Usage Guide
+
+Once CyberAgent is running, you can interact with it using direct English/Bangla prompts or manage the agent environment using slash (`/`) commands:
+
+### 📖 General & Environment Commands (`/help`, `/status`)
+| Command | What it does / কীভাবে কাজ করে |
+| :--- | :--- |
+| **`/help`** | Displays the complete interactive cheat sheet of all available slash commands, tool profiles, memory queries, and browser modes. |
+| **`/status`** | Displays the current live dashboard: Active API Provider, Connected Model, Workspace Directory, API Key status, and HITL safety gate. |
+| **`/clear`** | Clears the terminal screen and repaints the CyberAgent banner. |
+| **`/provider <name>`** | Switches the LLM engine instantly: `ollama`, `groq`, `gemini`, `deepseek`, `openai`, `openrouter`, `anthropic`. |
+| **`/model <name>`** | Switches the specific model (e.g. `/model qwen2.5:3b`, `/model llama-3.3-70b-versatile`, `/model gpt-4o`). |
+| **`/key <api_key>`** | Sets your API key for the active provider. Auto-detects keys prefixed with `gsk_` (Groq), `AIza` (Gemini), `sk-or-` (OpenRouter), etc. |
+| **`/workspace <path>`** | Changes the active project directory where CyberAgent performs file reads, audits, patches, and command execution. |
+| **`exit` or `quit`** | Gracefully closes the CyberAgent session and flushes temporary logs. |
+
+---
+
+### 🔧 Dynamic Tool Management (`/tools`)
+Control which security tools the agent is allowed to access and call:
+
+| Command | Action & Effect |
+| :--- | :--- |
+| **`/tools`** (or `/tools select`) | Opens the **Interactive Terminal Tool Selector**. You see a numbered list of all tools with `[✔] ON` / `[ ] OFF` badges. Enter numbers (e.g. `1, 4, 12`) to toggle tools on/off, type `all` to enable all, `none` to disable, or `done` to save. |
+| **`/tools mouse`** (or `/tools gui`) | 🖱️ Opens a **native desktop popup window** allowing you to toggle and enable tools using your mouse with 1-click presets! |
+| **`/tools minimal`** | Switches to ultra-fast mode (only 3 core tools: `run_command`, `read_file`, `write_file`). Ideal for rapid coding & debugging with zero latency. |
+| **`/tools pentest`** | Enables offensive auditing tools (`run_full_pentest_audit`, `fuzz_web_endpoints`, `detect_waf_fingerprint`, `audit_login_security`, etc.). |
+| **`/tools search`** | Enables web and passive reconnaissance tools (`search_internet`, `scrape_web_page`, `enumerate_subdomains`, `lookup_whois_and_ip`). |
+| **`/tools all`** | Enables all armed native security tools for full-spectrum autonomous operations. |
+| **`/tools status`** | Displays a summary table of currently active vs disabled tools. |
+
+---
+
+### 🛡️ Safety & Human-in-the-Loop (`/hitl`)
+| Command | Purpose |
+| :--- | :--- |
+| **`/hitl status`** | Shows which sensitive commands (command execution, file modifications, exploit payload delivery) require user confirmation. |
+| **`/hitl on`** | Enforces strict safety: CyberAgent must prompt you for approval before executing shell commands or writing files. |
+| **`/hitl off`** | Disables approval gates: Runs the agent in full autonomous mode. |
+| **`/hitl all`** | Temporarily approves all sensitive operations for the remainder of the session. |
+
+---
+
+### 🌐 Autonomous Browser & Web Navigation (`/browser`, `/browse`)
+| Command | Description |
+| :--- | :--- |
+| **`/browser gui`** | Switches Playwright Chromium to visible desktop mode so you can watch the agent browse live on your screen. |
+| **`/browser headless`** | Runs web crawling and audits silently in the background (Default). |
+| **`/browse <url> [--gui]`** | Instructs the autonomous browser to navigate to a target website and extract DOM structure, forms, and inputs. |
+| **`/screenshot [name]`** | Captures a full-page desktop screenshot of the current active browser page into the `screenshots/` directory. |
+
+---
+
+### 🧠 Short-Term & Long-Term Memory (`/memory`, `/dossier`)
+| Command | Usage |
+| :--- | :--- |
+| **`/memory`** | Shows the ultra-fast active session memory stored in RAM (findings, targets, actions taken). |
+| **`/memory <query>`** | Performs a semantic search across permanent SQLite storage using NLTK Stemming & vector embeddings. |
+| **`/memory save`** | Flushes and saves findings from the active session into the permanent SQLite knowledge base. |
+| **`/dossier <target>`** | Retrieves the complete intelligence dossier for a target (e.g. `/dossier example.com`), including past vulnerability scores, detected WAF, open ports, and historical findings. |
+
+---
+
+### 🐝 Multi-Agent Swarm Mode (`/team` or `/swarm`)
+| Command | Purpose |
+| :--- | :--- |
+| **`/team <mission>`** | Spawns a collaborative 3-agent swarm (*Reconnaissance Agent*, *Exploitation Specialist*, and *Defensive Hardening Architect*) that work concurrently to solve complex objectives. |
+
+---
+
 ## 🧰 Native Tool Suites (57 Armed Capabilities)
 
 | Mission Profile | Tools Armed | Key Modules |
