@@ -40,10 +40,15 @@ storage/*.sqlite3
 *.sqlite3
 storage/history/
 
-# Large Model Weights & Fine-tuning Binaries (Use Git LFS or HuggingFace Hub)
+# Large Model Weights (Use Hugging Face Hub)
 models/*.gguf
 models/*.bin
 models/*.safetensors
+
+# Large Raw Training Datasets (Exclude from GitHub push to prevent size timeouts)
+training/*.json
+training/*.jsonl
+training/all data/
 
 # Runtime Artifacts & Reports
 reports/*.pdf
@@ -59,4 +64,3 @@ screenshots/test_demo.png
 .idea/
 .DS_Store
 Thumbs.db
-
