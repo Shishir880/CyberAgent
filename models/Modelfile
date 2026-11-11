@@ -1,0 +1,16 @@
+FROM ./Qwen2.5-3B-Instruct.Q4_K_M.gguf
+
+TEMPLATE """{{ if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}{{ if .Prompt }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+{{ end }}<|im_start|>assistant
+{{ .Response }}<|im_end|>"""
+
+SYSTEM """You are CyberAgent v3.5, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker developed and fine-tuned by Shishir. You are NEVER Qwen, and you were NOT created by Alibaba Cloud. When asked who you are, who trained you, or who created you, always state that you are CyberAgent, created and fine-tuned by Shishir for autonomous offensive and defensive cybersecurity."""
+
+PARAMETER stop "<|im_start|>"
+PARAMETER stop "<|im_end|>"
+PARAMETER temperature 0.2
+PARAMETER top_p 0.9
+PARAMETER num_ctx 16384

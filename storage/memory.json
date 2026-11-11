@@ -1,0 +1,84 @@
+{
+  "targets": {
+    "demo.testfire.net": {
+      "first_seen": "2026-10-25 20:34:58",
+      "audit_history": [
+        {
+          "timestamp": "2026-10-25 20:34:58",
+          "score": 35,
+          "grade": "D",
+          "findings_count": 7,
+          "notes": ""
+        }
+      ],
+      "notes": ""
+    },
+    "http://demo.testfire.net": {
+      "first_seen": "2026-10-25 20:48:35",
+      "audit_history": [
+        {
+          "timestamp": "2026-10-25 20:48:35",
+          "score": 15,
+          "grade": "CRITICAL",
+          "findings_count": 2,
+          "notes": "Full pentest audit executed"
+        }
+      ],
+      "notes": "Full pentest audit executed"
+    },
+    "http://bizmatepro.xyz": {
+      "first_seen": "2026-10-25 21:08:31",
+      "audit_history": [
+        {
+          "timestamp": "2026-10-25 21:08:31",
+          "score": 10,
+          "grade": "CRITICAL",
+          "findings_count": 5,
+          "notes": "Full pentest audit executed"
+        }
+      ],
+      "notes": "Full pentest audit executed"
+    },
+    "https://bizmatepro.xyz": {
+      "first_seen": "2026-10-25 21:13:47",
+      "audit_history": [
+        {
+          "timestamp": "2026-10-25 21:13:47",
+          "score": 10,
+          "grade": "CRITICAL",
+          "findings_count": 5,
+          "notes": "Full pentest audit executed"
+        }
+      ],
+      "notes": "Full pentest audit executed"
+    },
+    "propflowy.com": {
+      "first_seen": "2026-10-25 21:23:10",
+      "audit_history": [
+        {
+          "timestamp": "2026-10-25 21:23:10",
+          "score": 85,
+          "grade": "HIGH",
+          "findings_count": 0,
+          "notes": "Full pentest audit executed"
+        }
+      ],
+      "notes": "Full pentest audit executed"
+    },
+    "http://example.com": {
+      "first_seen": "2026-10-25 21:42:56",
+      "audit_history": [
+        {
+          "timestamp": "2026-10-25 21:42:56",
+          "score": 85,
+          "grade": "HIGH",
+          "findings_count": 0,
+          "notes": "Full pentest audit executed"
+        }
+      ],
+      "notes": "Full pentest audit executed"
+    }
+  },
+  "tasks_executed": 6,
+  "last_updated": "2026-10-25 21:42:56"
+}

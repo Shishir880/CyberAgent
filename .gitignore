@@ -1,0 +1,62 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Local Environment & Secrets
+.env
+storage/*.sqlite3
+*.sqlite3
+storage/history/
+
+# Large Model Weights & Fine-tuning Binaries (Use Git LFS or HuggingFace Hub)
+models/*.gguf
+models/*.bin
+models/*.safetensors
+
+# Runtime Artifacts & Reports
+reports/*.pdf
+reports/*.html
+reports/*.json
+screenshots/browser_audit.png
+screenshots/testfire_home.png
+screenshots/test_demo.png
+*.log
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+

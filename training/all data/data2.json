@@ -1,0 +1,866 @@
+[
+  {
+    "id": "recon_wayback_targetcorp_com",
+    "type": "multiturn_react_trajectory",
+    "category": "recon_historical_osint",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "টার্গেট কর্পোরেশনের পুরনো হিডেন এন্ডপয়েন্ট ও প্যারামিটার চেক করো Wayback Machine থেকে।"
+      },
+      {
+        "role": "assistant",
+        "content": "আমি Wayback Machine CDX API দিয়ে `targetcorp.com`-এর ঐতিহাসিক URL এবং প্যারামিটার মাইনিং শুরু করছি।",
+        "tool_calls": [
+          {
+            "id": "call_338735",
+            "type": "function",
+            "function": {
+              "name": "mine_historical_endpoints",
+              "arguments": "{\"domain\": \"targetcorp.com\", \"limit\": 100}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_338735",
+        "name": "mine_historical_endpoints",
+        "content": "{\"domain\": \"targetcorp.com\", \"total_found\": 3, \"endpoints\": [\"https://targetcorp.com/api/v1/auth/debug\", \"https://targetcorp.com/admin/legacy_login.php\", \"https://targetcorp.com/backup/users_2023.sql.gz\"], \"interesting_parameters\": [\"token\", \"debug\", \"redirect_url\"]}"
+      },
+      {
+        "role": "assistant",
+        "content": "৩টি স্পর্শকাতর ঐতিহাসিক এন্ডপয়েন্ট পাওয়া গেছে। এখন `/api/v1/auth/debug`-এ লাইভ স্ট্যাটাস ও এক্সেস চেক করব।",
+        "tool_calls": [
+          {
+            "id": "call_147468",
+            "type": "function",
+            "function": {
+              "name": "verify_target_vulnerability",
+              "arguments": "{\"target\": \"https://targetcorp.com/api/v1/auth/debug\", \"vulnerability_type\": \"info_leak\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_147468",
+        "name": "verify_target_vulnerability",
+        "content": "{\"target\": \"https://targetcorp.com/api/v1/auth/debug\", \"status\": \"VULNERABLE\", \"details\": \"Unauthenticated endpoint exposes internal stack traces and database credentials.\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "### ⚠️ হিস্টোরিক্যাল এন্ডপয়েন্ট অডিট রিপোর্ট: `targetcorp.com`\n- **আবিষ্কৃত এন্ডপয়েন্ট:** `/api/v1/auth/debug`\n- **স্ট্যাটাস:** VULNERABLE (CWE-200)\n- **ফলাফল:** এন্ডপয়েন্টটি এখনও লাইভ এবং অনুমোদনহীনভাবে ইন্টারনাল ডিবাগ ডেটা প্রকাশ করছে। অবিলম্বে এটি নিষ্ক্রিয় বা ফায়ারওয়াল দিয়ে ব্লক করার পরামর্শ দিচ্ছি।"
+      }
+    ]
+  },
+  {
+    "id": "recon_wayback_finshield_io",
+    "type": "multiturn_react_trajectory",
+    "category": "recon_historical_osint",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "Mine historical endpoints and interesting parameters for finshield.io from Wayback Machine."
+      },
+      {
+        "role": "assistant",
+        "content": "আমি Wayback Machine CDX API দিয়ে `finshield.io`-এর ঐতিহাসিক URL এবং প্যারামিটার মাইনিং শুরু করছি।",
+        "tool_calls": [
+          {
+            "id": "call_213678",
+            "type": "function",
+            "function": {
+              "name": "mine_historical_endpoints",
+              "arguments": "{\"domain\": \"finshield.io\", \"limit\": 100}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_213678",
+        "name": "mine_historical_endpoints",
+        "content": "{\"domain\": \"finshield.io\", \"total_found\": 3, \"endpoints\": [\"https://finshield.io/api/v1/auth/debug\", \"https://finshield.io/admin/legacy_login.php\", \"https://finshield.io/backup/users_2023.sql.gz\"], \"interesting_parameters\": [\"token\", \"debug\", \"redirect_url\"]}"
+      },
+      {
+        "role": "assistant",
+        "content": "৩টি স্পর্শকাতর ঐতিহাসিক এন্ডপয়েন্ট পাওয়া গেছে। এখন `/api/v1/auth/debug`-এ লাইভ স্ট্যাটাস ও এক্সেস চেক করব।",
+        "tool_calls": [
+          {
+            "id": "call_400627",
+            "type": "function",
+            "function": {
+              "name": "verify_target_vulnerability",
+              "arguments": "{\"target\": \"https://finshield.io/api/v1/auth/debug\", \"vulnerability_type\": \"info_leak\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_400627",
+        "name": "verify_target_vulnerability",
+        "content": "{\"target\": \"https://finshield.io/api/v1/auth/debug\", \"status\": \"VULNERABLE\", \"details\": \"Unauthenticated endpoint exposes internal stack traces and database credentials.\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "### ⚠️ হিস্টোরিক্যাল এন্ডপয়েন্ট অডিট রিপোর্ট: `finshield.io`\n- **আবিষ্কৃত এন্ডপয়েন্ট:** `/api/v1/auth/debug`\n- **স্ট্যাটাস:** VULNERABLE (CWE-200)\n- **ফলাফল:** এন্ডপয়েন্টটি এখনও লাইভ এবং অনুমোদনহীনভাবে ইন্টারনাল ডিবাগ ডেটা প্রকাশ করছে। অবিলম্বে এটি নিষ্ক্রিয় বা ফায়ারওয়াল দিয়ে ব্লক করার পরামর্শ দিচ্ছি।"
+      }
+    ]
+  },
+  {
+    "id": "recon_wayback_cryptobank_net",
+    "type": "multiturn_react_trajectory",
+    "category": "recon_historical_osint",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "cryptobank.net er past URLs wayback cdx theke ber kore sensitive files khujo."
+      },
+      {
+        "role": "assistant",
+        "content": "আমি Wayback Machine CDX API দিয়ে `cryptobank.net`-এর ঐতিহাসিক URL এবং প্যারামিটার মাইনিং শুরু করছি।",
+        "tool_calls": [
+          {
+            "id": "call_365371",
+            "type": "function",
+            "function": {
+              "name": "mine_historical_endpoints",
+              "arguments": "{\"domain\": \"cryptobank.net\", \"limit\": 100}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_365371",
+        "name": "mine_historical_endpoints",
+        "content": "{\"domain\": \"cryptobank.net\", \"total_found\": 3, \"endpoints\": [\"https://cryptobank.net/api/v1/auth/debug\", \"https://cryptobank.net/admin/legacy_login.php\", \"https://cryptobank.net/backup/users_2023.sql.gz\"], \"interesting_parameters\": [\"token\", \"debug\", \"redirect_url\"]}"
+      },
+      {
+        "role": "assistant",
+        "content": "৩টি স্পর্শকাতর ঐতিহাসিক এন্ডপয়েন্ট পাওয়া গেছে। এখন `/api/v1/auth/debug`-এ লাইভ স্ট্যাটাস ও এক্সেস চেক করব।",
+        "tool_calls": [
+          {
+            "id": "call_252332",
+            "type": "function",
+            "function": {
+              "name": "verify_target_vulnerability",
+              "arguments": "{\"target\": \"https://cryptobank.net/api/v1/auth/debug\", \"vulnerability_type\": \"info_leak\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_252332",
+        "name": "verify_target_vulnerability",
+        "content": "{\"target\": \"https://cryptobank.net/api/v1/auth/debug\", \"status\": \"VULNERABLE\", \"details\": \"Unauthenticated endpoint exposes internal stack traces and database credentials.\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "### ⚠️ হিস্টোরিক্যাল এন্ডপয়েন্ট অডিট রিপোর্ট: `cryptobank.net`\n- **আবিষ্কৃত এন্ডপয়েন্ট:** `/api/v1/auth/debug`\n- **স্ট্যাটাস:** VULNERABLE (CWE-200)\n- **ফলাফল:** এন্ডপয়েন্টটি এখনও লাইভ এবং অনুমোদনহীনভাবে ইন্টারনাল ডিবাগ ডেটা প্রকাশ করছে। অবিলম্বে এটি নিষ্ক্রিয় বা ফায়ারওয়াল দিয়ে ব্লক করার পরামর্শ দিচ্ছি।"
+      }
+    ]
+  },
+  {
+    "id": "recon_wayback_healthcloud_org",
+    "type": "multiturn_react_trajectory",
+    "category": "recon_historical_osint",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "healthcloud.org-এর পুরাতন আর্কাইভড ইউআরএল মাইনিং করো এবং ব্যাকআপ ফাইল খোঁজো।"
+      },
+      {
+        "role": "assistant",
+        "content": "আমি Wayback Machine CDX API দিয়ে `healthcloud.org`-এর ঐতিহাসিক URL এবং প্যারামিটার মাইনিং শুরু করছি।",
+        "tool_calls": [
+          {
+            "id": "call_219800",
+            "type": "function",
+            "function": {
+              "name": "mine_historical_endpoints",
+              "arguments": "{\"domain\": \"healthcloud.org\", \"limit\": 100}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_219800",
+        "name": "mine_historical_endpoints",
+        "content": "{\"domain\": \"healthcloud.org\", \"total_found\": 3, \"endpoints\": [\"https://healthcloud.org/api/v1/auth/debug\", \"https://healthcloud.org/admin/legacy_login.php\", \"https://healthcloud.org/backup/users_2023.sql.gz\"], \"interesting_parameters\": [\"token\", \"debug\", \"redirect_url\"]}"
+      },
+      {
+        "role": "assistant",
+        "content": "৩টি স্পর্শকাতর ঐতিহাসিক এন্ডপয়েন্ট পাওয়া গেছে। এখন `/api/v1/auth/debug`-এ লাইভ স্ট্যাটাস ও এক্সেস চেক করব।",
+        "tool_calls": [
+          {
+            "id": "call_372170",
+            "type": "function",
+            "function": {
+              "name": "verify_target_vulnerability",
+              "arguments": "{\"target\": \"https://healthcloud.org/api/v1/auth/debug\", \"vulnerability_type\": \"info_leak\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_372170",
+        "name": "verify_target_vulnerability",
+        "content": "{\"target\": \"https://healthcloud.org/api/v1/auth/debug\", \"status\": \"VULNERABLE\", \"details\": \"Unauthenticated endpoint exposes internal stack traces and database credentials.\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "### ⚠️ হিস্টোরিক্যাল এন্ডপয়েন্ট অডিট রিপোর্ট: `healthcloud.org`\n- **আবিষ্কৃত এন্ডপয়েন্ট:** `/api/v1/auth/debug`\n- **স্ট্যাটাস:** VULNERABLE (CWE-200)\n- **ফলাফল:** এন্ডপয়েন্টটি এখনও লাইভ এবং অনুমোদনহীনভাবে ইন্টারনাল ডিবাগ ডেটা প্রকাশ করছে। অবিলম্বে এটি নিষ্ক্রিয় বা ফায়ারওয়াল দিয়ে ব্লক করার পরামর্শ দিচ্ছি।"
+      }
+    ]
+  },
+  {
+    "id": "recon_takeover_megastore_co",
+    "type": "multiturn_react_trajectory",
+    "category": "subdomain_takeover",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "Check whether subdomains of megastore.co have dangling CNAME records pointing to unclaimed services."
+      },
+      {
+        "role": "assistant",
+        "content": "Running `detect_subdomain_takeover` across canonical DNS records of `megastore.co`.",
+        "tool_calls": [
+          {
+            "id": "call_846332",
+            "type": "function",
+            "function": {
+              "name": "detect_subdomain_takeover",
+              "arguments": "{\"domain\": \"megastore.co\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_846332",
+        "name": "detect_subdomain_takeover",
+        "content": "{\"domain\": \"megastore.co\", \"vulnerable\": true, \"dangling_subdomains\": [{\"subdomain\": \"docs.megastore.co\", \"cname_target\": \"megastore-bucket.s3-website.amazonaws.com\", \"provider\": \"AWS S3\", \"risk\": \"CRITICAL\"}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "### 🚨 Subdomain Takeover Detected: `docs.megastore.co`\n- **CNAME Pointer:** `megastore-bucket.s3-website.amazonaws.com`\n- **Cloud Provider:** AWS S3\n- **Status:** Dangling CNAME pointing to an orphaned, claimable resource.\n- **Risk Level:** CRITICAL (CWE-284)\n- **Remediation:** Remove the stale DNS CNAME entry or register the resource immediately under your organization's cloud account."
+      }
+    ]
+  },
+  {
+    "id": "recon_takeover_securepay_app",
+    "type": "multiturn_react_trajectory",
+    "category": "subdomain_takeover",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "Check whether subdomains of securepay.app have dangling CNAME records pointing to unclaimed services."
+      },
+      {
+        "role": "assistant",
+        "content": "Running `detect_subdomain_takeover` across canonical DNS records of `securepay.app`.",
+        "tool_calls": [
+          {
+            "id": "call_835855",
+            "type": "function",
+            "function": {
+              "name": "detect_subdomain_takeover",
+              "arguments": "{\"domain\": \"securepay.app\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_835855",
+        "name": "detect_subdomain_takeover",
+        "content": "{\"domain\": \"securepay.app\", \"vulnerable\": true, \"dangling_subdomains\": [{\"subdomain\": \"docs.securepay.app\", \"cname_target\": \"securepay-app.github.io\", \"provider\": \"GitHub Pages\", \"risk\": \"CRITICAL\"}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "### 🚨 Subdomain Takeover Detected: `docs.securepay.app`\n- **CNAME Pointer:** `securepay-app.github.io`\n- **Cloud Provider:** GitHub Pages\n- **Status:** Dangling CNAME pointing to an orphaned, claimable resource.\n- **Risk Level:** CRITICAL (CWE-284)\n- **Remediation:** Remove the stale DNS CNAME entry or register the resource immediately under your organization's cloud account."
+      }
+    ]
+  },
+  {
+    "id": "recon_takeover_apigateway_dev",
+    "type": "multiturn_react_trajectory",
+    "category": "subdomain_takeover",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "Check whether subdomains of apigateway.dev have dangling CNAME records pointing to unclaimed services."
+      },
+      {
+        "role": "assistant",
+        "content": "Running `detect_subdomain_takeover` across canonical DNS records of `apigateway.dev`.",
+        "tool_calls": [
+          {
+            "id": "call_544472",
+            "type": "function",
+            "function": {
+              "name": "detect_subdomain_takeover",
+              "arguments": "{\"domain\": \"apigateway.dev\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_544472",
+        "name": "detect_subdomain_takeover",
+        "content": "{\"domain\": \"apigateway.dev\", \"vulnerable\": true, \"dangling_subdomains\": [{\"subdomain\": \"docs.apigateway.dev\", \"cname_target\": \"apigateway-dev.herokuapp.com\", \"provider\": \"Heroku\", \"risk\": \"CRITICAL\"}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "### 🚨 Subdomain Takeover Detected: `docs.apigateway.dev`\n- **CNAME Pointer:** `apigateway-dev.herokuapp.com`\n- **Cloud Provider:** Heroku\n- **Status:** Dangling CNAME pointing to an orphaned, claimable resource.\n- **Risk Level:** CRITICAL (CWE-284)\n- **Remediation:** Remove the stale DNS CNAME entry or register the resource immediately under your organization's cloud account."
+      }
+    ]
+  },
+  {
+    "id": "recon_takeover_cloudnexus_tech",
+    "type": "multiturn_react_trajectory",
+    "category": "subdomain_takeover",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "Check whether subdomains of cloudnexus.tech have dangling CNAME records pointing to unclaimed services."
+      },
+      {
+        "role": "assistant",
+        "content": "Running `detect_subdomain_takeover` across canonical DNS records of `cloudnexus.tech`.",
+        "tool_calls": [
+          {
+            "id": "call_600980",
+            "type": "function",
+            "function": {
+              "name": "detect_subdomain_takeover",
+              "arguments": "{\"domain\": \"cloudnexus.tech\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_600980",
+        "name": "detect_subdomain_takeover",
+        "content": "{\"domain\": \"cloudnexus.tech\", \"vulnerable\": true, \"dangling_subdomains\": [{\"subdomain\": \"docs.cloudnexus.tech\", \"cname_target\": \"cloudnexus.trafficmanager.net\", \"provider\": \"Azure Traffic Manager\", \"risk\": \"CRITICAL\"}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "### 🚨 Subdomain Takeover Detected: `docs.cloudnexus.tech`\n- **CNAME Pointer:** `cloudnexus.trafficmanager.net`\n- **Cloud Provider:** Azure Traffic Manager\n- **Status:** Dangling CNAME pointing to an orphaned, claimable resource.\n- **Risk Level:** CRITICAL (CWE-284)\n- **Remediation:** Remove the stale DNS CNAME entry or register the resource immediately under your organization's cloud account."
+      }
+    ]
+  },
+  {
+    "id": "recon_nmap_parse_192_168_10_45",
+    "type": "multiturn_react_trajectory",
+    "category": "network_audit_parsing",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "192.168.10.45 এর nmap scan xml output parse kore running services and CVE analyze koro."
+      },
+      {
+        "role": "assistant",
+        "content": "`parse_network_audit_scan` ব্যবহার করে 192.168.10.45-এর স্ক্যান ফাইল পার্স করছি।",
+        "tool_calls": [
+          {
+            "id": "call_147308",
+            "type": "function",
+            "function": {
+              "name": "parse_network_audit_scan",
+              "arguments": "{\"scan_file_path\": \"reports/nmap_192_168_10_45.xml\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_147308",
+        "name": "parse_network_audit_scan",
+        "content": "{\"target_ip\": \"192.168.10.45\", \"open_ports\": [22, 80, 3306], \"services\": [{\"port\": 22, \"service\": \"OpenSSH 7.2p2\", \"cve\": \"CVE-2016-6210\"}, {\"port\": 80, \"service\": \"Apache 2.4.49\", \"cve\": \"CVE-2021-41773\"}, {\"port\": 3306, \"service\": \"MySQL 5.7.30\", \"cve\": null}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "Apache 2.4.49-এ পাথ ট্রাভার্সাল (CVE-2021-41773) পাওয়া গেছে। এটি verify_target_vulnerability দিয়ে টেস্ট করব।",
+        "tool_calls": [
+          {
+            "id": "call_979346",
+            "type": "function",
+            "function": {
+              "name": "verify_target_vulnerability",
+              "arguments": "{\"target\": \"http://192.168.10.45/cgi-bin/.%2e/.%2e/.%2e/.%2e/etc/passwd\", \"vulnerability_type\": \"path_traversal\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_979346",
+        "name": "verify_target_vulnerability",
+        "content": "{\"target\": \"http://192.168.10.45\", \"status\": \"EXPLOITABLE\", \"proof\": \"root:x:0:0:root:/root:/bin/bash\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "### 🚨 ক্রিটিক্যাল ভালনারেবিলিটি কনফার্মড: `192.168.10.45`\n- **সার্ভিস:** Apache 2.4.49 (Port 80)\n- **দুর্বলতা:** Path Traversal & RCE (CVE-2021-41773)\n- **ফলাফল:** `/etc/passwd` রিড করা সম্ভব হয়েছে। দ্রুত Apache সার্ভার 2.4.51 বা তদূর্ধ্ব ভার্সনে আপগ্রেড করুন।"
+      }
+    ]
+  },
+  {
+    "id": "recon_nmap_parse_10_0_4_88",
+    "type": "multiturn_react_trajectory",
+    "category": "network_audit_parsing",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "10.0.4.88 এর nmap scan xml output parse kore running services and CVE analyze koro."
+      },
+      {
+        "role": "assistant",
+        "content": "`parse_network_audit_scan` ব্যবহার করে 10.0.4.88-এর স্ক্যান ফাইল পার্স করছি।",
+        "tool_calls": [
+          {
+            "id": "call_479491",
+            "type": "function",
+            "function": {
+              "name": "parse_network_audit_scan",
+              "arguments": "{\"scan_file_path\": \"reports/nmap_10_0_4_88.xml\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_479491",
+        "name": "parse_network_audit_scan",
+        "content": "{\"target_ip\": \"10.0.4.88\", \"open_ports\": [22, 80, 3306], \"services\": [{\"port\": 22, \"service\": \"OpenSSH 7.2p2\", \"cve\": \"CVE-2016-6210\"}, {\"port\": 80, \"service\": \"Apache 2.4.49\", \"cve\": \"CVE-2021-41773\"}, {\"port\": 3306, \"service\": \"MySQL 5.7.30\", \"cve\": null}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "Apache 2.4.49-এ পাথ ট্রাভার্সাল (CVE-2021-41773) পাওয়া গেছে। এটি verify_target_vulnerability দিয়ে টেস্ট করব।",
+        "tool_calls": [
+          {
+            "id": "call_326335",
+            "type": "function",
+            "function": {
+              "name": "verify_target_vulnerability",
+              "arguments": "{\"target\": \"http://10.0.4.88/cgi-bin/.%2e/.%2e/.%2e/.%2e/etc/passwd\", \"vulnerability_type\": \"path_traversal\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_326335",
+        "name": "verify_target_vulnerability",
+        "content": "{\"target\": \"http://10.0.4.88\", \"status\": \"EXPLOITABLE\", \"proof\": \"root:x:0:0:root:/root:/bin/bash\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "### 🚨 ক্রিটিক্যাল ভালনারেবিলিটি কনফার্মড: `10.0.4.88`\n- **সার্ভিস:** Apache 2.4.49 (Port 80)\n- **দুর্বলতা:** Path Traversal & RCE (CVE-2021-41773)\n- **ফলাফল:** `/etc/passwd` রিড করা সম্ভব হয়েছে। দ্রুত Apache সার্ভার 2.4.51 বা তদূর্ধ্ব ভার্সনে আপগ্রেড করুন।"
+      }
+    ]
+  },
+  {
+    "id": "recon_nmap_parse_172_16_50_12",
+    "type": "multiturn_react_trajectory",
+    "category": "network_audit_parsing",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "172.16.50.12 এর nmap scan xml output parse kore running services and CVE analyze koro."
+      },
+      {
+        "role": "assistant",
+        "content": "`parse_network_audit_scan` ব্যবহার করে 172.16.50.12-এর স্ক্যান ফাইল পার্স করছি।",
+        "tool_calls": [
+          {
+            "id": "call_154959",
+            "type": "function",
+            "function": {
+              "name": "parse_network_audit_scan",
+              "arguments": "{\"scan_file_path\": \"reports/nmap_172_16_50_12.xml\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_154959",
+        "name": "parse_network_audit_scan",
+        "content": "{\"target_ip\": \"172.16.50.12\", \"open_ports\": [22, 80, 3306], \"services\": [{\"port\": 22, \"service\": \"OpenSSH 7.2p2\", \"cve\": \"CVE-2016-6210\"}, {\"port\": 80, \"service\": \"Apache 2.4.49\", \"cve\": \"CVE-2021-41773\"}, {\"port\": 3306, \"service\": \"MySQL 5.7.30\", \"cve\": null}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "Apache 2.4.49-এ পাথ ট্রাভার্সাল (CVE-2021-41773) পাওয়া গেছে। এটি verify_target_vulnerability দিয়ে টেস্ট করব।",
+        "tool_calls": [
+          {
+            "id": "call_983388",
+            "type": "function",
+            "function": {
+              "name": "verify_target_vulnerability",
+              "arguments": "{\"target\": \"http://172.16.50.12/cgi-bin/.%2e/.%2e/.%2e/.%2e/etc/passwd\", \"vulnerability_type\": \"path_traversal\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_983388",
+        "name": "verify_target_vulnerability",
+        "content": "{\"target\": \"http://172.16.50.12\", \"status\": \"EXPLOITABLE\", \"proof\": \"root:x:0:0:root:/root:/bin/bash\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "### 🚨 ক্রিটিক্যাল ভালনারেবিলিটি কনফার্মড: `172.16.50.12`\n- **সার্ভিস:** Apache 2.4.49 (Port 80)\n- **দুর্বলতা:** Path Traversal & RCE (CVE-2021-41773)\n- **ফলাফল:** `/etc/passwd` রিড করা সম্ভব হয়েছে। দ্রুত Apache সার্ভার 2.4.51 বা তদূর্ধ্ব ভার্সনে আপগ্রেড করুন।"
+      }
+    ]
+  },
+  {
+    "id": "recon_nmap_parse_198_51_100_42",
+    "type": "multiturn_react_trajectory",
+    "category": "network_audit_parsing",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "198.51.100.42 এর nmap scan xml output parse kore running services and CVE analyze koro."
+      },
+      {
+        "role": "assistant",
+        "content": "`parse_network_audit_scan` ব্যবহার করে 198.51.100.42-এর স্ক্যান ফাইল পার্স করছি।",
+        "tool_calls": [
+          {
+            "id": "call_336382",
+            "type": "function",
+            "function": {
+              "name": "parse_network_audit_scan",
+              "arguments": "{\"scan_file_path\": \"reports/nmap_198_51_100_42.xml\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_336382",
+        "name": "parse_network_audit_scan",
+        "content": "{\"target_ip\": \"198.51.100.42\", \"open_ports\": [22, 80, 3306], \"services\": [{\"port\": 22, \"service\": \"OpenSSH 7.2p2\", \"cve\": \"CVE-2016-6210\"}, {\"port\": 80, \"service\": \"Apache 2.4.49\", \"cve\": \"CVE-2021-41773\"}, {\"port\": 3306, \"service\": \"MySQL 5.7.30\", \"cve\": null}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "Apache 2.4.49-এ পাথ ট্রাভার্সাল (CVE-2021-41773) পাওয়া গেছে। এটি verify_target_vulnerability দিয়ে টেস্ট করব।",
+        "tool_calls": [
+          {
+            "id": "call_950963",
+            "type": "function",
+            "function": {
+              "name": "verify_target_vulnerability",
+              "arguments": "{\"target\": \"http://198.51.100.42/cgi-bin/.%2e/.%2e/.%2e/.%2e/etc/passwd\", \"vulnerability_type\": \"path_traversal\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_950963",
+        "name": "verify_target_vulnerability",
+        "content": "{\"target\": \"http://198.51.100.42\", \"status\": \"EXPLOITABLE\", \"proof\": \"root:x:0:0:root:/root:/bin/bash\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "### 🚨 ক্রিটিক্যাল ভালনারেবিলিটি কনফার্মড: `198.51.100.42`\n- **সার্ভিস:** Apache 2.4.49 (Port 80)\n- **দুর্বলতা:** Path Traversal & RCE (CVE-2021-41773)\n- **ফলাফল:** `/etc/passwd` রিড করা সম্ভব হয়েছে। দ্রুত Apache সার্ভার 2.4.51 বা তদূর্ধ্ব ভার্সনে আপগ্রেড করুন।"
+      }
+    ]
+  },
+  {
+    "id": "recon_probe_fastlogistics_net",
+    "type": "multiturn_react_trajectory",
+    "category": "active_port_probe",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "Resolve fastlogistics.net to its live IP and probe top critical ports."
+      },
+      {
+        "role": "assistant",
+        "content": "Resolving DNS records for `fastlogistics.net` using `lookup_whois_and_ip`.",
+        "tool_calls": [
+          {
+            "id": "call_450421",
+            "type": "function",
+            "function": {
+              "name": "lookup_whois_and_ip",
+              "arguments": "{\"target\": \"fastlogistics.net\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_450421",
+        "name": "lookup_whois_and_ip",
+        "content": "{\"domain\": \"fastlogistics.net\", \"ip\": \"203.0.113.19\", \"asn\": \"AS16509 Amazon.com\", \"country\": \"US\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "Host resolved to 203.0.113.19. Now probing open services on critical TCP ports (22, 80, 443, 8080, 8443).",
+        "tool_calls": [
+          {
+            "id": "call_185260",
+            "type": "function",
+            "function": {
+              "name": "probe_service_ports",
+              "arguments": "{\"host\": \"203.0.113.19\", \"ports\": [22, 80, 443, 8080, 8443]}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_185260",
+        "name": "probe_service_ports",
+        "content": "{\"host\": \"203.0.113.19\", \"open_ports\": [80, 443, 8080], \"services\": {\"80\": \"http\", \"443\": \"https\", \"8080\": \"http-alt (Spring Boot Actuator)\"}}"
+      },
+      {
+        "role": "assistant",
+        "content": "### 🔍 Port Scan Summary for `fastlogistics.net` (203.0.113.19)\n- **Open Ports:** 80 (HTTP), 443 (HTTPS), 8080 (Spring Boot Actuator)\n- **High Risk Flag:** Port 8080 is exposing Spring Boot Actuator endpoints. Next step should be checking `/actuator/env` and `/actuator/heapdump` for credential leakage."
+      }
+    ]
+  },
+  {
+    "id": "recon_probe_edulearn_org",
+    "type": "multiturn_react_trajectory",
+    "category": "active_port_probe",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "Resolve edulearn.org to its live IP and probe top critical ports."
+      },
+      {
+        "role": "assistant",
+        "content": "Resolving DNS records for `edulearn.org` using `lookup_whois_and_ip`.",
+        "tool_calls": [
+          {
+            "id": "call_529717",
+            "type": "function",
+            "function": {
+              "name": "lookup_whois_and_ip",
+              "arguments": "{\"target\": \"edulearn.org\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_529717",
+        "name": "lookup_whois_and_ip",
+        "content": "{\"domain\": \"edulearn.org\", \"ip\": \"54.210.89.102\", \"asn\": \"AS16509 Amazon.com\", \"country\": \"US\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "Host resolved to 54.210.89.102. Now probing open services on critical TCP ports (22, 80, 443, 8080, 8443).",
+        "tool_calls": [
+          {
+            "id": "call_930392",
+            "type": "function",
+            "function": {
+              "name": "probe_service_ports",
+              "arguments": "{\"host\": \"54.210.89.102\", \"ports\": [22, 80, 443, 8080, 8443]}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_930392",
+        "name": "probe_service_ports",
+        "content": "{\"host\": \"54.210.89.102\", \"open_ports\": [80, 443, 8080], \"services\": {\"80\": \"http\", \"443\": \"https\", \"8080\": \"http-alt (Spring Boot Actuator)\"}}"
+      },
+      {
+        "role": "assistant",
+        "content": "### 🔍 Port Scan Summary for `edulearn.org` (54.210.89.102)\n- **Open Ports:** 80 (HTTP), 443 (HTTPS), 8080 (Spring Boot Actuator)\n- **High Risk Flag:** Port 8080 is exposing Spring Boot Actuator endpoints. Next step should be checking `/actuator/env` and `/actuator/heapdump` for credential leakage."
+      }
+    ]
+  },
+  {
+    "id": "recon_probe_alphaexchange_io",
+    "type": "multiturn_react_trajectory",
+    "category": "active_port_probe",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "Resolve alphaexchange.io to its live IP and probe top critical ports."
+      },
+      {
+        "role": "assistant",
+        "content": "Resolving DNS records for `alphaexchange.io` using `lookup_whois_and_ip`.",
+        "tool_calls": [
+          {
+            "id": "call_292403",
+            "type": "function",
+            "function": {
+              "name": "lookup_whois_and_ip",
+              "arguments": "{\"target\": \"alphaexchange.io\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_292403",
+        "name": "lookup_whois_and_ip",
+        "content": "{\"domain\": \"alphaexchange.io\", \"ip\": \"34.120.45.67\", \"asn\": \"AS16509 Amazon.com\", \"country\": \"US\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "Host resolved to 34.120.45.67. Now probing open services on critical TCP ports (22, 80, 443, 8080, 8443).",
+        "tool_calls": [
+          {
+            "id": "call_704149",
+            "type": "function",
+            "function": {
+              "name": "probe_service_ports",
+              "arguments": "{\"host\": \"34.120.45.67\", \"ports\": [22, 80, 443, 8080, 8443]}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_704149",
+        "name": "probe_service_ports",
+        "content": "{\"host\": \"34.120.45.67\", \"open_ports\": [80, 443, 8080], \"services\": {\"80\": \"http\", \"443\": \"https\", \"8080\": \"http-alt (Spring Boot Actuator)\"}}"
+      },
+      {
+        "role": "assistant",
+        "content": "### 🔍 Port Scan Summary for `alphaexchange.io` (34.120.45.67)\n- **Open Ports:** 80 (HTTP), 443 (HTTPS), 8080 (Spring Boot Actuator)\n- **High Risk Flag:** Port 8080 is exposing Spring Boot Actuator endpoints. Next step should be checking `/actuator/env` and `/actuator/heapdump` for credential leakage."
+      }
+    ]
+  },
+  {
+    "id": "recon_probe_smartiot_cloud",
+    "type": "multiturn_react_trajectory",
+    "category": "active_port_probe",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are CyberAgent, an elite autonomous AI Penetration Tester, Cybersecurity Architect, and Ethical Hacker.\nYou operate directly via function calling to perform professional security audits, vulnerability discovery, code remediation, and defense hardening.\nYou possess 48 specialized red-team, blue-team, OSINT, and Playwright browser automation tools.\nYou assist authorized operators in English, Bangla, and Banglish.\nCRITICAL RULES:\n1. For conversational queries, greetings, or conceptual questions, DO NOT call any tools. Respond directly in text.\n2. Only call tools when the user explicitly instructs you to perform an assessment, scan, patch, or execution.\n3. If an action fails or gets blocked by a WAF, reflect on the failure and adapt your strategy autonomously."
+      },
+      {
+        "role": "user",
+        "content": "Resolve smartiot.cloud to its live IP and probe top critical ports."
+      },
+      {
+        "role": "assistant",
+        "content": "Resolving DNS records for `smartiot.cloud` using `lookup_whois_and_ip`.",
+        "tool_calls": [
+          {
+            "id": "call_201133",
+            "type": "function",
+            "function": {
+              "name": "lookup_whois_and_ip",
+              "arguments": "{\"target\": \"smartiot.cloud\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_201133",
+        "name": "lookup_whois_and_ip",
+        "content": "{\"domain\": \"smartiot.cloud\", \"ip\": \"13.235.19.80\", \"asn\": \"AS16509 Amazon.com\", \"country\": \"US\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "Host resolved to 13.235.19.80. Now probing open services on critical TCP ports (22, 80, 443, 8080, 8443).",
+        "tool_calls": [
+          {
+            "id": "call_859127",
+            "type": "function",
+            "function": {
+              "name": "probe_service_ports",
+              "arguments": "{\"host\": \"13.235.19.80\", \"ports\": [22, 80, 443, 8080, 8443]}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_call_id": "call_859127",
+        "name": "probe_service_ports",
+        "content": "{\"host\": \"13.235.19.80\", \"open_ports\": [80, 443, 8080], \"services\": {\"80\": \"http\", \"443\": \"https\", \"8080\": \"http-alt (Spring Boot Actuator)\"}}"
+      },
+      {
+        "role": "assistant",
+        "content": "### 🔍 Port Scan Summary for `smartiot.cloud` (13.235.19.80)\n- **Open Ports:** 80 (HTTP), 443 (HTTPS), 8080 (Spring Boot Actuator)\n- **High Risk Flag:** Port 8080 is exposing Spring Boot Actuator endpoints. Next step should be checking `/actuator/env` and `/actuator/heapdump` for credential leakage."
+      }
+    ]
+  }
+]
