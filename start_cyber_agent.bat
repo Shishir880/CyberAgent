@@ -1,26 +1,26 @@
 @echo off
 title CyberAgent - Autonomous AI Penetration Testing Platform
 cd /d "%~dp0"
+
 echo ========================================================
 echo   Starting CyberAgent Autonomous AI Platform
 echo ========================================================
 echo.
 
-:: Check if virtual environment exists, if not create and install dependencies
-if not exist ".venv" (
-    echo [*] Setting up virtual environment (.venv)...
-    python -m venv .venv
-    echo [*] Installing dependencies from requirements.txt...
-    call .venv\Scripts\activate.bat
-    pip install -r requirements.txt
+if exist ".venv\Scripts\activate.bat" (
+    call ".venv\Scripts\activate.bat"
 ) else (
-    call .venv\Scripts\activate.bat
+    echo [*] Creating virtual environment (.venv)...
+    python -m venv .venv
+    call ".venv\Scripts\activate.bat"
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
 )
 
-:: Launch CLI
 python cli.py
-if %ERRORLEVEL% NEQ 0 (
+
+if errorlevel 1 (
     echo.
-    echo [!] CyberAgent exited with an error. Press any key to close.
+    echo [!] CyberAgent exited. Press any key to close.
     pause >nul
 )
