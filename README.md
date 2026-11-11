@@ -91,6 +91,15 @@ You can run CyberAgent using local quantized GGUF weights or cloud providers:
   ollama create cyberagent-3b -f models/Modelfile
   ```
 
+> [!TIP]
+> **💡 Pro Tip: Local 3B Model vs Cloud API Performance**
+> - **Local 3B (`CyberAgent-3B` / `Qwen2.5-3B`):** Excellent for 100% offline, privacy-first, lightweight recon and basic triage without spending any money on tokens. However, due to the inherent parameter limitations of 3B architectures, small models can occasionally make tool-calling errors, misparse complex JSON, or loop on dense multistep reasoning.
+> - **Recommended for Production & Penetration Audits:** For maximum precision, flawless function calling, and zero-hallucination exploit chains, **using Cloud API models (such as Groq `llama-3.3-70b-versatile`, DeepSeek `deepseek-chat`, OpenAI `gpt-4o`, or Gemini `gemini-1.5-pro`) is strongly recommended.** You can easily switch using:
+>   ```bash
+>   /provider groq
+>   /key gsk_your_free_groq_api_key
+>   ```
+
 ### 5. Launch the Toolkit
 
 #### Option A: Cyberpunk GUI Tool Selector
