@@ -25,7 +25,7 @@ class HardeningToolsMixin:
             try:
                 from ..modules.security import scan_codebase_sast
             except Exception:
-                from cyber_agent.modules.security import scan_codebase_sast
+                from modules.security import scan_codebase_sast
         except ImportError:
             try:
                 from security_hub import scan_codebase_sast
@@ -45,7 +45,7 @@ class HardeningToolsMixin:
             try:
                 from ..modules.security.security_hub import generate_production_hardening
             except Exception:
-                from cyber_agent.modules.security.security_hub import generate_production_hardening
+                from modules.security.security_hub import generate_production_hardening
         except ImportError:
             try:
                 from security_hub import generate_production_hardening
@@ -64,7 +64,7 @@ class HardeningToolsMixin:
             try:
                 from ..modules.security import lookup_cve_advisories
             except Exception:
-                from cyber_agent.modules.security import lookup_cve_advisories
+                from modules.security import lookup_cve_advisories
         except ImportError:
             try:
                 from security_hub import lookup_cve_advisories
@@ -83,7 +83,7 @@ class HardeningToolsMixin:
             try:
                 from ..modules.security import generate_target_pdf_report
             except Exception:
-                from cyber_agent.modules.security import generate_target_pdf_report
+                from modules.security import generate_target_pdf_report
         except ImportError:
             try:
                 from security_hub import generate_target_pdf_report
@@ -116,7 +116,7 @@ class HardeningToolsMixin:
             try:
                 from modules.remediation import ClosedLoopPatchVerifier
             except Exception:
-                from cyber_agent.modules.remediation import ClosedLoopPatchVerifier
+                from modules.remediation import ClosedLoopPatchVerifier
 
         verifier = ClosedLoopPatchVerifier(workspace_root=self.workspace_root)
         return verifier.remediate_and_verify(

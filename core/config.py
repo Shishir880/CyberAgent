@@ -9,7 +9,7 @@ import json
 from typing import Dict, Any, Optional
 
 if getattr(sys, "frozen", False):
-    default_dev_dir = r"d:\ML-DL\tools\cyber_agent"
+    default_dev_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     if os.path.exists(default_dev_dir):
         pkg_dir = default_dev_dir
     else:

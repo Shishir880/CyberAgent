@@ -552,7 +552,7 @@ class AdvancedReconToolsMixin:
             try:
                 from modules.graph import AttackSurfaceGraph
             except Exception:
-                from cyber_agent.modules.graph import AttackSurfaceGraph
+                from modules.graph import AttackSurfaceGraph
 
         graph = getattr(self, "attack_graph", None) or AttackSurfaceGraph(workspace_root=self.workspace_root)
         html_file = graph.export_interactive_html(output_html_path)

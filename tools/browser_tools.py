@@ -20,7 +20,7 @@ class BrowserToolsMixin:
             try:
                 from ..modules.browser import get_browser_controller
             except Exception:
-                from cyber_agent.modules.browser import get_browser_controller
+                from modules.browser import get_browser_controller
         except ImportError:
             from browser_controller import get_browser_controller
         return get_browser_controller(workspace_root=self.workspace_root)

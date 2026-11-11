@@ -1,6 +1,6 @@
 """
 CyberAgent Cognitive Memory Engine (Backward Compatibility Wrapper)
-Real implementation resides in: cyber_agent.modules.memory
+Real implementation resides in: modules.memory
 """
 
 try:
@@ -23,7 +23,7 @@ except ImportError:
             DenseVectorEmbedder
         )
     except ImportError:
-        from cyber_agent.modules.memory import (
+        from modules.memory import (
             ShortTermMemory,
             get_short_term_memory,
             CyberMemoryEngine,

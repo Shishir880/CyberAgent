@@ -58,7 +58,7 @@ except Exception:
     try:
         from config import AgentConfig
     except Exception:
-        from cyber_agent.config import AgentConfig
+        from core.config import AgentConfig
 
 try:
     from ..tools import AgentTools
@@ -66,7 +66,7 @@ except Exception:
     try:
         from tools import AgentTools
     except Exception:
-        from cyber_agent.tools import AgentTools
+        from tools import AgentTools
 
 try:
     from .hitl import HITLManager
@@ -74,7 +74,7 @@ except Exception:
     try:
         from hitl import HITLManager
     except Exception:
-        from cyber_agent.core.hitl import HITLManager
+        from core.hitl import HITLManager
 
 
 class CyberAgent:
@@ -169,7 +169,7 @@ class CyberAgent:
             try:
                 from modules.graph import AttackSurfaceGraph
             except Exception:
-                from cyber_agent.modules.graph import AttackSurfaceGraph
+                from modules.graph import AttackSurfaceGraph
         self.attack_graph = AttackSurfaceGraph(workspace_root=self.config.workspace_root)
         self.tools.attack_graph = self.attack_graph
 
@@ -179,7 +179,7 @@ class CyberAgent:
             try:
                 from modules.memory import get_short_term_memory
             except Exception:
-                from cyber_agent.modules.memory import get_short_term_memory
+                from modules.memory import get_short_term_memory
         self.short_term_memory = get_short_term_memory()
 
     def _get_client(self) -> OpenAI:

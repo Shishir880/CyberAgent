@@ -15,15 +15,15 @@ if sys.platform == "win32":
         pass
 
 # Add parent directory to sys.path
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
 from rich.prompt import Prompt
 
-from cyber_agent.config import AgentConfig, PROVIDER_PRESETS
-from cyber_agent.agent import CyberAgent
+from core.config import AgentConfig, PROVIDER_PRESETS
+from core.agent import CyberAgent
 
 
 def print_banner(console: Console, config: AgentConfig):
@@ -120,7 +120,7 @@ def interactive_tool_selector(console: Console, agent: CyberAgent):
                 break
 
             if choice in ("mouse", "gui", "window", "popup"):
-                from cyber_agent.gui_selector import launch_mouse_tool_selector
+                from gui_selector import launch_mouse_tool_selector
                 selected = launch_mouse_tool_selector(
                     currently_enabled=list(enabled_set),
                     all_tools=tool_names
@@ -351,7 +351,7 @@ def main():
                         console.print(f"[bold green]Workspace set to: {config.workspace_root}[/bold green]")
                         agent = CyberAgent(config=config, console=console)
                 elif cmd == "/memory":
-                    from cyber_agent.memory_engine import get_short_term_memory
+                    from memory_engine import get_short_term_memory
                     st_mem = get_short_term_memory()
 
                     if not arg:
@@ -381,13 +381,13 @@ def main():
                         console.print("[bold green]🧹 Short-term session memory cleared successfully.[/bold green]")
 
                     elif arg.lower() in ["save", "sync", "flush"]:
-                        from cyber_agent.memory_engine import get_memory_engine
+                        from memory_engine import get_memory_engine
                         mem = get_memory_engine()
                         saved_count = st_mem.sync_to_long_term(mem)
                         console.print(f"[bold green]💾 Successfully committed {saved_count} session findings to permanent Long-Term SQLite memory![/bold green]")
 
                     elif arg.lower() in ["long", "stats", "overview"]:
-                        from cyber_agent.memory_engine import get_memory_engine
+                        from memory_engine import get_memory_engine
                         mem = get_memory_engine()
                         summary = mem.get_overview_summary()
                         console.print(Panel(
@@ -401,7 +401,7 @@ def main():
 
                     else:
                         # Deep Long-Term Recall
-                        from cyber_agent.memory_engine import get_memory_engine
+                        from memory_engine import get_memory_engine
                         mem = get_memory_engine()
                         console.print(f"[dim]Searching permanent Long-Term memory for '{arg}' using NLTK Stemming & Vector embeddings...[/dim]")
                         matches = mem.recall(query=arg, top_k=6)
@@ -420,7 +420,7 @@ def main():
                     if not arg:
                         console.print("[bold red]Please specify a target, e.g. /dossier demo.testfire.net[/bold red]")
                     else:
-                        from cyber_agent.memory_engine import get_memory_engine
+                        from memory_engine import get_memory_engine
                         mem = get_memory_engine()
                         dossier = mem.get_target_dossier(arg)
                         if dossier:
@@ -439,7 +439,7 @@ def main():
                         else:
                             console.print(f"[yellow]No security dossier found for target '{arg}'.[/yellow]")
                 elif cmd == "/browser":
-                    from cyber_agent.browser_controller import get_browser_controller
+                    from browser_controller import get_browser_controller
                     bc = get_browser_controller(workspace_root=config.workspace_root)
                     if arg.lower() in ["gui", "visible", "show", "window"]:
                         bc.set_headless(False)
@@ -471,7 +471,7 @@ def main():
                             force_gui = True
                             target_url = target_url.replace("--gui", "").replace("--visible", "").strip()
 
-                        from cyber_agent.browser_controller import get_browser_controller
+                        from browser_controller import get_browser_controller
                         bc = get_browser_controller(workspace_root=config.workspace_root)
                         if force_gui:
                             bc.set_headless(False)
@@ -493,7 +493,7 @@ def main():
                         else:
                             console.print(f"[bold red]Navigation failed: {nav_res.get('error')}[/bold red]")
                 elif cmd == "/screenshot":
-                    from cyber_agent.browser_controller import get_browser_controller
+                    from browser_controller import get_browser_controller
                     bc = get_browser_controller(workspace_root=config.workspace_root)
                     ss_res = bc.capture_screenshot(arg if arg else None)
                     if ss_res.get("success"):
@@ -505,7 +505,7 @@ def main():
                         console.print("[bold red]Please specify a mission objective, e.g.:[/bold red]")
                         console.print("[dim]/team Audit targetcorp.com, verify SQLi, and generate hardening report[/dim]")
                     else:
-                        from cyber_agent.core.orchestrator import SwarmOrchestrator
+                        from core.orchestrator import SwarmOrchestrator
                         orchestrator = SwarmOrchestrator(config=config, console=console)
                         orchestrator.run_collaborative_mission(arg)
                 elif cmd == "/hitl":
@@ -544,7 +544,7 @@ def main():
                     if not sub or sub in ("select", "menu"):
                         interactive_tool_selector(console, agent)
                     elif sub in ("mouse", "gui", "window", "popup"):
-                        from cyber_agent.gui_selector import launch_mouse_tool_selector
+                        from gui_selector import launch_mouse_tool_selector
                         currently_enabled = [td["function"]["name"] for td in agent.get_active_tool_definitions()]
                         all_tools = [td["function"]["name"] for td in agent.all_tool_definitions]
                         selected = launch_mouse_tool_selector(currently_enabled=currently_enabled, all_tools=all_tools)

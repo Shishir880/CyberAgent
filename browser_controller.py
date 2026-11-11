@@ -1,6 +1,6 @@
 """
 CyberAgent Autonomous Browser Controller (Backward Compatibility Wrapper)
-Real implementation resides in: cyber_agent.modules.browser.browser_controller
+Real implementation resides in: modules.browser.browser_controller
 """
 
 try:
@@ -15,7 +15,7 @@ except ImportError:
             get_browser_controller
         )
     except ImportError:
-        from cyber_agent.modules.browser.browser_controller import (
+        from modules.browser.browser_controller import (
             AutonomousBrowserController,
             get_browser_controller
         )

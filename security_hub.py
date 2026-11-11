@@ -1,6 +1,6 @@
 """
 CyberAgent Security Hub (Backward Compatibility Wrapper)
-Real implementation resides in: cyber_agent.modules.security.security_hub
+Real implementation resides in: modules.security.security_hub
 """
 
 try:
@@ -9,4 +9,4 @@ except ImportError:
     try:
         from modules.security.security_hub import *
     except ImportError:
-        from cyber_agent.modules.security.security_hub import *
+        from modules.security.security_hub import *

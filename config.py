@@ -1,6 +1,6 @@
 """
 CyberAgent Configuration (Backward Compatibility Wrapper)
-Real implementation resides in: cyber_agent.core.config
+Real implementation resides in: core.config
 """
 
 try:
@@ -9,6 +9,6 @@ except ImportError:
     try:
         from core.config import AgentConfig, PROVIDER_PRESETS
     except ImportError:
-        from cyber_agent.core.config import AgentConfig, PROVIDER_PRESETS
+        from core.config import AgentConfig, PROVIDER_PRESETS
 
 __all__ = ["AgentConfig", "PROVIDER_PRESETS"]

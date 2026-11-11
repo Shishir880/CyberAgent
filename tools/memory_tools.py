@@ -18,7 +18,7 @@ class MemoryToolsMixin:
             try:
                 from ..modules.memory import get_memory_engine
             except Exception:
-                from cyber_agent.modules.memory import get_memory_engine
+                from modules.memory import get_memory_engine
         except ImportError:
             from memory_engine import get_memory_engine
         return get_memory_engine()
