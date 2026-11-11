@@ -85,9 +85,10 @@ Copy the example environment file:
 cp .env.example .env
 ```
 
-### 4. Optional: Download Fine-Tuned Local Model (Hugging Face)
+### 4. Optional: Download Fine-Tuned Model & Dataset (Hugging Face)
 You can run CyberAgent using local quantized GGUF weights or cloud providers:
 - **Hugging Face Model Hub:** [HFShishir/CyberAgent-3B-GGUF](https://huggingface.co/HFShishir/CyberAgent-3B-GGUF)
+- **Hugging Face Dataset Hub:** [HFShishir/CyberAgent-Cybersecurity-FineTune-Dataset](https://huggingface.co/datasets/HFShishir/CyberAgent-Cybersecurity-FineTune-Dataset)
 - Run directly in Ollama:
   ```bash
   ollama create cyberagent-3b -f models/Modelfile
