@@ -7,20 +7,19 @@ echo   Starting CyberAgent Autonomous AI Platform
 echo ========================================================
 echo.
 
-if exist ".venv\Scripts\activate.bat" (
-    call ".venv\Scripts\activate.bat"
+if exist "%~dp0.venv\Scripts\python.exe" (
+    echo [*] Running CyberAgent with virtual environment...
+    "%~dp0.venv\Scripts\python.exe" "%~dp0cli.py"
 ) else (
     echo [*] Creating virtual environment (.venv)...
     python -m venv .venv
-    call ".venv\Scripts\activate.bat"
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
+    "%~dp0.venv\Scripts\python.exe" -m pip install --upgrade pip
+    "%~dp0.venv\Scripts\pip.exe" install -r requirements.txt
+    "%~dp0.venv\Scripts\python.exe" "%~dp0cli.py"
 )
 
-python cli.py
-
-if errorlevel 1 (
-    echo.
-    echo [!] CyberAgent exited. Press any key to close.
-    pause >nul
-)
+echo.
+echo ========================================================
+echo [*] CyberAgent process ended. Press any key to close.
+echo ========================================================
+pause >nul
