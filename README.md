@@ -1,20 +1,17 @@
-<div align="center">
+# ⚡ CyberAgent v3.5 - Autonomous AI Penetration Testing & Security Operator
 
-# 🛡️ CyberAgent (Autonomous Penetration Testing & AI Security Engine)
+> 🌐 **Don't want to install Python, Ollama, or dependencies locally?**  
+> **[👉 Run Instant 1-Click Cloud Audits on Bizmatepro.xyz](https://www.bizmatepro.xyz/cyber-tools)**
 
-**The Open-Source, Multi-Agent Autonomous Cybersecurity & External Posture Auditor**
-
+[![Website](https://img.shields.io/badge/Web_Scanner-Bizmatepro.xyz-6366f1?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.bizmatepro.xyz)
+[![Model](https://img.shields.io/badge/HuggingFace-CyberAgent--3B-yellow?style=for-the-badge)](https://huggingface.co/HFShishir/CyberAgent-3B-GGUF)
+[![Dataset](https://img.shields.io/badge/HuggingFace-Dataset-orange?style=for-the-badge)](https://huggingface.co/datasets/HFShishir/CyberAgent-Cybersecurity-FineTune-Dataset)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Architecture: ReAct](https://img.shields.io/badge/architecture-ReAct%20Loop-orange.svg)]()
-[![Model: Local/Cloud](https://img.shields.io/badge/LLM-Ollama%20%7C%20Groq%20%7C%20DeepSeek%20%7C%20OpenAI-purple.svg)]()
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 ---
 
-### *Transforming Reactive Security Scans into Autonomous AI-Driven Defense*
-
-</div>
+### *The Open-Source, Multi-Agent Autonomous Cybersecurity & External Posture Auditor*
 
 CyberAgent is a production-grade, autonomous security framework designed to conduct **zero-risk passive posture audits**, **active penetration testing**, **vulnerability discovery**, and **automated infrastructure hardening**. Built on deterministic ReAct loops with strict anti-hallucination guards, it operates safely under Human-in-the-Loop (HITL) supervision.
 
